@@ -1,0 +1,54 @@
+body {
+   font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+   font-weight: 600;
+   padding: 20px 0;
+     text-transform: uppercase;
+     text-align: justify;
+}
+
+h1, h2 {
+   font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+   font-weight: 800;
+   text-align: center;
+   text-transform: uppercase;
+}
+
+hr {
+  margin: 40px 0;
+  height: 30px;
+  border: none;
+  background-image: url('/assets/hr.png');
+  background-position: right;
+  background-repeat: no-repeat;
+  background-size: auto 30px;
+}
+
+.header {
+  font-weight: 800;
+  font-size: 20px;
+  text-align: center;
+  line-height: 18px;
+}
+
+.header big {
+  font-size: 25px;
+}
+
+.header small {
+  font-size: 12px;
+}
+
+.cookie{
+  width: 555px;
+  margin: 20px 0;
+}
+
+.vistete,
+.mapa {
+  width: 200px;
+  margin-left: 31px;
+}
+
+
+
+
