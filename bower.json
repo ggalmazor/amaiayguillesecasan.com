@@ -1,0 +1,10 @@
+{
+  "name": "amaiayguillesecasan.com",
+  "dependencies": {
+    "angular": "*",
+    "angular-route": "*",
+    "leaflet": "*",
+    "bootstrap": "*",
+    "angular-leaflet-directive": "~0.7.7"
+  }
+}

@@ -1,8 +1,12 @@
 {
+  "dependencies": {
+    "gulp": "^3.5.6",
+    "gulp-clean": "^0.2.4",
+    "gulp-concat": "^2.2.0",
+    "gulp-rename": "^1.2.0",
+    "q": "^1.0.1"
+  },
   "devDependencies": {
-    "grunt": "0.4.x",
-    "grunt-contrib-connect": "0.3.x",
-    "grunt-contrib-watch": "0.5.x",
-    "matchdep": "0.1.x"
+    "gulp-connect": "^2.0.5"
   }
 }

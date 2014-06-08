@@ -1,0 +1,91 @@
+<h2>Cuéntame...</h2>
+
+<form class="form-horizontal">
+  <div class="form-group">
+    <label>¿Cómo te llamas?</label>
+    <input type="text" ng-model="respuesta.nombre" class="form-control" placeholder="Pon tu nombre aquí">
+  </div>
+
+  <div class="form-group">
+    <label>¿Cuál es tu dirección de correo electrónico?</label>
+    <input type="email" ng-model="respuesta.email" class="form-control" placeholder="cocotero@chuchu.es">
+    <span class="help-block">Para mantenerte al tanto según se vaya acercando la fecha. También, si quieres, te mandaremos fotos y otras cosas después de la boda.</span>
+  </div>
+
+  <div class="form-group">
+    <label>¿Cuál es tu número de teléfono?</label>
+    <input type="text" ng-model="respuesta.telefono" class="form-control" placeholder="612456789">
+    <span class="help-block">Es solo por si tenemos que llamarte para preguntarte algo, o para avisarte de algo...</span>
+  </div>
+
+  <p>Te queremos cuidar bien... dinos si necesitas algo en especial:</p>
+
+  <div class="checkbox">
+    <label>
+      <input type="checkbox" ng-model="respuesta.comida.celiaco">Nada de gluten, soy celiaco.
+    </label>
+  </div>
+
+  <div class="checkbox">
+    <label>
+      <input type="checkbox" ng-model="respuesta.comida.vegetariano">Nada de animales, soy vegetariano.
+    </label>
+  </div>
+
+  <div class="checkbox">
+    <label>
+      <input type="checkbox" ng-model="respuesta.comida.alergico">Soy alérgico, así que nada de
+      <input type="text" ng-model="respuesta.comida.alergias" ng-change="haMetidoAlergias()" placeholder="marisco, frutos secos..." />
+    </label>
+  </div>
+
+  <div class="form-group">
+    <label>¿Cuántos más vienen contigo?</label>
+    <input type="number" ng-model="respuesta.otrosAsistentes" ng-change="hayMasAsistentes()" class="form-control" placeholder="0" min="0" step="1">
+  </div>
+
+  <div ng-if="respuesta.otrosAsistentes > 0">
+    <div ng-repeat="asistente in respuesta.asistentes">
+      <hr/>
+      <div class="form-group">
+        <label>Nombre del asistente #{{$index + 2}}</label>
+        <input type="text" ng-model="asistente.nombre" class="form-control" placeholder="Pon su nombre aquí">
+      </div>
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" ng-model="asistente.comida.celiaco">Nada de gluten, es celiaco.
+        </label>
+      </div>
+
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" ng-model="asistente.comida.vegetariano">Nada de animales, es vegetariano.
+        </label>
+      </div>
+
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" ng-model="asistente.comida.alergico">Es alérgico, así que nada de
+          <input type="text" ng-model="asistente.comida.alergias" ng-change="haMetidoAlergias(asistente)" placeholder="marisco, frutos secos..." />
+        </label>
+      </div>
+    </div>
+  </div>
+
+
+  <hr/>
+  
+  <div class="form-group">
+    <label>Estamos organizando el transporte en autobús desde el Ayuntamiento de San Sebastián hasta el restaurante... Si crees que en tu grupo vais a necesitar usar el autobús, dime cuántos asientos vais a ocupar en total</label>
+    <input type="number" ng-model="respuesta.autobus" class="form-control" placeholder="0" min="0" step="1">
+    <span class="help-block">No os preocupéis de la vuelta, porque habrá autobuses de vez en cuando :)</span>
+  </div>
+  
+  <div class="form-group">
+    <label>¿Algo más que añadir?</label>
+    <textarea ng-model="respuesta.observaciones" class="form-control" rows="3"></textarea>
+  </div>
+  
+  <button type="button" class="btn btn-primary btn-lg btn-block" ng-click="enviar()">¡Enviar!</button>
+</form>
+</div>
