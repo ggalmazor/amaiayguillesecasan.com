@@ -45,6 +45,19 @@ app.config(function ($routeProvider) {
 });
 
 app.controller('ConfirmaController', function ($scope, $http) {
+  function success() {
+    $scope.enviando = false;
+    $scope.success = true;
+  };
+
+  function error(err) {
+    $scope.enviando = false;
+    $scope.error = err;
+  };
+
+  $scope.enviando = false;
+  $scope.success = false;
+  $scope.error = false;
   $scope.respuesta = Asistente(true);
 
   $scope.haMetidoAlergias = function (persona) {
@@ -57,10 +70,11 @@ app.controller('ConfirmaController', function ($scope, $http) {
       return Asistente();
     });
   };
-  
-  $scope.enviar = function() {
-    $http.post('http://bodaguille.herokuapp.com/respuesta/', $scope.respuesta);
-  };  
+
+  $scope.enviar = function () {
+    $scope.enviando = true;
+    $http.post('http://bodaguille.herokuapp.com/respuesta/', $scope.respuesta).then(success, error);
+  };
 });
 
 app.run(function ($rootScope) {
