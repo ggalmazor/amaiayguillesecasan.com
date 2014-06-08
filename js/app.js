@@ -34,9 +34,13 @@ app.config(function ($routeProvider) {
     templateUrl: 'tpls/home.html'
   });
 
-  $routeProvider.when('/confirma', {
+  $routeProvider.when('/confirma-tu-asistencia', {
     templateUrl: 'tpls/confirma.html',
     controller: 'ConfirmaController'
+  });
+  
+  $routeProvider.when('/como-llegar', {
+    templateUrl: 'tpls/como-llegar.html'
   });
 
   $routeProvider.otherwise({
