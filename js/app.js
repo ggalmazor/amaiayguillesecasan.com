@@ -38,9 +38,19 @@ app.config(function ($routeProvider) {
     templateUrl: 'tpls/confirma.html',
     controller: 'ConfirmaController'
   });
-  
+
   $routeProvider.when('/como-llegar', {
     templateUrl: 'tpls/como-llegar.html'
+  });
+
+  $routeProvider.when('/moda/:quien', {
+    templateUrl: 'tpls/moda.html',
+    controller: 'ModaController'
+  });
+
+  $routeProvider.when('/moda', {
+    templateUrl: 'tpls/moda.html',
+    controller: 'ModaController'
   });
 
   $routeProvider.otherwise({
@@ -78,6 +88,29 @@ app.controller('ConfirmaController', function ($scope, $http) {
   $scope.enviar = function () {
     $scope.enviando = true;
     $http.post('http://bodaguille.herokuapp.com/respuesta/', $scope.respuesta).then(success, error);
+  };
+});
+
+app.controller('ModaController', function ($scope, $routeParams) {
+  var max = {
+    ellas: 171,
+    ellos: 107,
+    peques: 58
+  };
+  $scope.max = max;
+  $scope.quien = $routeParams.quien || 'ellas';
+  $scope.current = 1;
+  $scope.hayMas = function () {
+    return $scope.current < max[$scope.quien];
+  };
+  $scope.hayMenos = function () {
+    return $scope.current > 1;
+  };
+  $scope.siguiente = function () {
+    $scope.current++;
+  };
+  $scope.anterior = function () {
+    $scope.current--;
   };
 });
 

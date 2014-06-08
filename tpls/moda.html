@@ -1,0 +1,19 @@
+<a href="#/"><h3><span class="glyphicon glyphicon-home"></span>&nbsp;volver...</h3></a>
+
+<h1>En directo desde el pasado</h1>
+
+<h2>La moda del 69</h2>
+
+<div style="text-align: center;">
+  <a href="#/moda/ellas" class="btn"><h3>Ellas</h3></a>
+  <a href="#/moda/ellos" class="btn"><h3>Ellos</h3></a>
+  <a href="#/moda/peques" class="btn"><h3>Peques</h3></a>
+</div>
+
+<div class="btn-group btn-group-justified">
+  <a ng-click="anterior()" ng-disabled="!hayMenos()" class="btn btn-primary"><span class="glyphicon glyphicon-chevron-left"></span>&nbsp;Anterior</a>
+  <a ng-click="siguiente()" ng-disabled="!hayMas()" class="btn btn-primary">Siguiente&nbsp;<span class="glyphicon glyphicon-chevron-right"></span></a>
+</div>
+
+<img class="center-block img-responsive" ng-attr-src="/assets/moda/{{quien}}/ejemplo-{{current}}.jpg"/>
+<span class="pull-right">{{current}} de {{max[quien]}}</span>
