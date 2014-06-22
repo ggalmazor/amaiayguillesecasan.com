@@ -22,11 +22,12 @@
 
   <h2>Cuéntame...</h2>
 
-  <form name="form" class="form-horizontal">
-    <div class="form-group" ng-class="{'has-error': !form.nombre.$pristine && form.nombre.$invalid}">
+  <form name="form" class="form-horizontal" role="form">
+    <div class="form-group  has-feedback" ng-class="{'has-error': !form.nombre.$pristine && form.nombre.$invalid}">
       <label>¿Cómo te llamas?</label>
       <input type="text" ng-model="respuesta.nombre" name="nombre" required class="form-control" placeholder="Pon tu nombre aquí">
       <span class="help-block" ng-show="!form.nombre.$pristine && form.nombre.$invalid">Introduce tu nombre porfaplis</span>
+      <span ng-show="form.nombre.$invalid" class="glyphicon glyphicon-warning-sign form-control-feedback"></span>
     </div>
 
     <div class="form-group">
@@ -35,72 +36,91 @@
       <span class="help-block">Para mantenerte al tanto según se vaya acercando la fecha. También, si quieres, te mandaremos fotos y otras cosas después de la boda.</span>
     </div>
 
-    <div class="form-group" ng-class="{'has-error': !form.telefono.$pristine && form.telefono.$invalid}">
+    <div class="form-group has-feedback" ng-class="{'has-error': !form.telefono.$pristine && form.telefono.$invalid}">
       <label>¿Cuál es tu número de teléfono?</label>
       <input type="text" ng-model="respuesta.telefono" name="telefono" required class="form-control" placeholder="612456789">
       <span class="help-block" ng-show="!form.telefono.$pristine && form.telefono.$invalid">Es solo por si tenemos que llamarte para preguntarte algo, o para avisarte de algo...</span>
-    </div>
-
-    <p>Te queremos cuidar bien... dinos si necesitas algo en especial:</p>
-
-    <div class="checkbox">
-      <label>
-        <input type="checkbox" ng-model="respuesta.comida.celiaco">Nada de gluten, soy celiaco.
-      </label>
-    </div>
-
-    <div class="checkbox">
-      <label>
-        <input type="checkbox" ng-model="respuesta.comida.vegetariano">Nada de animales, soy vegetariano.
-      </label>
-    </div>
-
-    <div class="checkbox">
-      <label>
-        <input type="checkbox" ng-model="respuesta.comida.alergico">Soy alérgico, así que nada de
-        <input type="text" ng-model="respuesta.comida.alergias" ng-change="haMetidoAlergias()" placeholder="marisco, frutos secos..." />
-      </label>
+      <span ng-show="form.telefono.$invalid" class="glyphicon glyphicon-warning-sign form-control-feedback"></span>
     </div>
 
     <div class="form-group">
+      <p style="margin-bottom: 0px;">Te queremos cuidar bien... dinos si necesitas algo en especial:</p>
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" ng-model="respuesta.comida.celiaco">Nada de gluten, soy celiaco.
+        </label>
+      </div>
+
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" ng-model="respuesta.comida.vegetariano">Nada de animales, soy vegetariano.
+        </label>
+      </div>
+
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" ng-model="respuesta.comida.alergico">Soy alérgico, así que nada de
+          <input type="text" ng-model="respuesta.comida.alergias" ng-change="haMetidoAlergias()" placeholder="marisco, frutos secos..." />
+        </label>
+      </div>
+    </div>
+    
+    <hr/>
+
+    <div class="form-group" style="padding-top: 10px; margin-bottom: 0px;">
       <label>¿Cuántos más vienen contigo?</label>
-      <input type="number" ng-model="respuesta.otrosAsistentes" ng-change="hayMasAsistentes()" class="form-control" placeholder="0" min="0" step="1">
+      <br/>
+      <div class="btn-group">
+        <button ng-repeat="numero in range(4)" type="button" class="btn" ng-class="{'btn-default': !hayOtrosAsistentes(numero), 'btn-primary': hayOtrosAsistentes(numero)}" ng-click="setOtrosAsistentes(numero)">
+          {{numeros[numero]}}
+        </button>
+      </div>
+      <span class="help-block" ng-if="!hayOtrosAsistentes(0)"><span class="label label-success">¡Ojo!</span>&nbsp;Rellena los nombres de los demás asistentes a continuación...</span>
+      <!--<span class="help-block">Si vienes con más de 3 personas, dile al cuarto que pase por aquí como tú y que lo rellene para el resto, porfa.</span>-->
     </div>
 
     <div ng-if="respuesta.otrosAsistentes > 0">
       <div ng-repeat="asistente in respuesta.asistentes">
-        <hr/>
-        <div class="form-group">
-          <label>Nombre del asistente #{{$index + 2}}</label>
-          <input type="text" ng-model="asistente.nombre" class="form-control" placeholder="Pon su nombre aquí">
-        </div>
-        <div class="checkbox">
-          <label>
-            <input type="checkbox" ng-model="asistente.comida.celiaco">Nada de gluten, es celiaco.
-          </label>
-        </div>
+        <ng-form name="asistente">
+          <div class="form-group has-feedback" style="margin-bottom: 0px;" ng-class="{'has-error': !asistente.$pristine && asistente.$invalid}">
+            <label>Nombre del asistente #{{$index + 2}}</label>
+            <input type="text" ng-model="asistente.nombre" class="form-control" required placeholder="Pon su nombre aquí">
+            <span ng-show="asistente.$invalid" class="glyphicon glyphicon-warning-sign form-control-feedback"></span>
+            <span class="help-block" ng-show="!asistente.$pristine && asistente.$invalid">Introduce el nombre del asistente silvuplé</span>
+          </div>
+        </ng-form>
+        <div class="form-group" style="margin-top: 0px;">
+          <div class="checkbox">
+            <label>
+              <input type="checkbox" ng-model="asistente.comida.celiaco">Nada de gluten, es celiaco.
+            </label>
+          </div>
 
-        <div class="checkbox">
-          <label>
-            <input type="checkbox" ng-model="asistente.comida.vegetariano">Nada de animales, es vegetariano.
-          </label>
-        </div>
+          <div class="checkbox">
+            <label>
+              <input type="checkbox" ng-model="asistente.comida.vegetariano">Nada de animales, es vegetariano.
+            </label>
+          </div>
 
-        <div class="checkbox">
-          <label>
-            <input type="checkbox" ng-model="asistente.comida.alergico">Es alérgico, así que nada de
-            <input type="text" ng-model="asistente.comida.alergias" ng-change="haMetidoAlergias(asistente)" placeholder="marisco, frutos secos..." />
-          </label>
+          <div class="checkbox">
+            <label>
+              <input type="checkbox" ng-model="asistente.comida.alergico">Es alérgico, así que nada de
+              <input type="text" ng-model="asistente.comida.alergias" ng-change="haMetidoAlergias(asistente)" placeholder="marisco, frutos secos..." />
+            </label>
+          </div>
         </div>
       </div>
     </div>
-
 
     <hr/>
 
     <div class="form-group">
       <label>Estamos organizando el transporte en autobús desde el Ayuntamiento de San Sebastián hasta el restaurante... Si crees que en tu grupo vais a necesitar usar el autobús, dime cuántos asientos vais a ocupar en total</label>
-      <input type="number" ng-model="respuesta.autobus" name="autobus" class="form-control" placeholder="0" min="0" step="1">
+      <div class="btn-group">
+        <button ng-repeat="numero in range(respuesta.otrosAsistentes + 2)" type="button" class="btn" ng-class="{'btn-default': !enAutobus(numero), 'btn-primary': enAutobus(numero)}" ng-click="setEnAutobus(numero)">
+          {{numeros[numero]}}
+        </button>
+      </div>
       <span class="help-block">No os preocupéis de la vuelta, porque habrá autobuses de vez en cuando :)</span>
     </div>
 
@@ -110,5 +130,6 @@
     </div>
 
     <button type="button" class="btn btn-primary btn-lg btn-block" ng-click="enviar()" ng-disabled="form.$pristine || form.$invalid">¡Enviar!</button>
+    <span ng-show="form.$pristine || form.$invalid" class="help-block">¿Seguro que has rellenado todos los campos con <span class="glyphicon glyphicon-warning-sign"></span>?</span>
   </form>
 </section>

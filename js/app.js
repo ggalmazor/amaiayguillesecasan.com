@@ -52,6 +52,10 @@ app.config(function ($routeProvider) {
     templateUrl: 'tpls/moda.html',
     controller: 'ModaController'
   });
+  
+  $routeProvider.when('/originales', {
+    templateUrl: 'tpls/originales.html'
+  });
 
   $routeProvider.otherwise({
     redirectTo: '/'
@@ -78,12 +82,27 @@ app.controller('ConfirmaController', function ($scope, $http) {
     persona = persona || $scope.respuesta;
     persona.comida.alergico = persona.comida.alergias !== '';
   };
-
-  $scope.hayMasAsistentes = function () {
-    $scope.respuesta.asistentes = range($scope.respuesta.otrosAsistentes).map(function () {
+  
+  $scope.setOtrosAsistentes = function(cantidad) {
+    $scope.respuesta.otrosAsistentes = cantidad;
+    $scope.respuesta.asistentes = range($scope.respuesta.otrosAsistentes).map(function() {
       return Asistente();
     });
   };
+  
+  $scope.hayOtrosAsistentes = function(cantidad) {
+    return $scope.respuesta.otrosAsistentes == cantidad;
+  };
+  
+  $scope.enAutobus = function(cantidad) {
+    return $scope.respuesta.autobus == cantidad;
+  };
+  
+  $scope.setEnAutobus = function(cantidad) {
+    $scope.respuesta.autobus = cantidad;
+  };
+  
+  $scope.numeros = ['Ninguna', 'Uno', 'Dos', 'Tres', 'Cuatro'];
 
   $scope.enviar = function () {
     $scope.enviando = true;

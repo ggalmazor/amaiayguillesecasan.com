@@ -30,8 +30,12 @@ hr {
   background-repeat: no-repeat;
   background-size: auto 30px;
 }
-a, a:active, a:hover, a:visited {
+a,
+a:active,
+a:hover,
+a:visited {
   color: #6A3793;
+  text-decoration: underline;
 }
 .header {
   padding-top: 40px;
@@ -46,4 +50,7 @@ a, a:active, a:hover, a:visited {
 }
 .header small {
   font-size: 12px;
+}
+.form-group {
+  margin-top: 30px;
 }

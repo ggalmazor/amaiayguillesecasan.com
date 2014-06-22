@@ -58,7 +58,7 @@ gulp.task('libs', function () {
 gulp.task('css', function () {
   'use strict';
 
-  return gulp.src(paths.bower + 'bootstrap/dist/css/bootstrap.min.css').pipe(gulp.dest(paths.build.css));
+  return gulp.src(paths.bower + 'bootstrap/dist/css/bootstrap.css').pipe(gulp.dest(paths.build.css));
 });
 
 gulp.task('fonts', function () {
