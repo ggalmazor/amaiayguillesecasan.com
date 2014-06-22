@@ -81,12 +81,12 @@
 
     <div ng-if="respuesta.otrosAsistentes > 0">
       <div ng-repeat="asistente in respuesta.asistentes">
-        <ng-form name="asistente">
-          <div class="form-group has-feedback" style="margin-bottom: 0px;" ng-class="{'has-error': !asistente.$pristine && asistente.$invalid}">
+        <ng-form name="asistente_form">
+          <div class="form-group has-feedback" style="margin-bottom: 0px;" ng-class="{'has-error': !asistente_form.$pristine && asistente_form.$invalid}">
             <label>Nombre del asistente #{{$index + 2}}</label>
             <input type="text" ng-model="asistente.nombre" class="form-control" required placeholder="Pon su nombre aquí">
-            <span ng-show="asistente.$invalid" class="glyphicon glyphicon-warning-sign form-control-feedback"></span>
-            <span class="help-block" ng-show="!asistente.$pristine && asistente.$invalid">Introduce el nombre del asistente silvuplé</span>
+            <span ng-show="asistente_form.$invalid" class="glyphicon glyphicon-warning-sign form-control-feedback"></span>
+            <span class="help-block" ng-show="!asistente_form.$pristine && asistente_form.$invalid">Introduce el nombre del asistente silvuplé</span>
           </div>
         </ng-form>
         <div class="form-group" style="margin-top: 0px;">
