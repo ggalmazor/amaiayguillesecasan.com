@@ -63,8 +63,19 @@
           <input type="text" ng-model="respuesta.comida.alergias" ng-change="haMetidoAlergias()" placeholder="marisco, frutos secos..." />
         </label>
       </div>
+
+      <label>¿A qué te apuntas?</label>
+      <br/>
+      <div class="btn-group">
+        <button type="button" class="btn" ng-class="{'btn-default': !seApuntaA('comer'), 'btn-primary': seApuntaA('comer')}" ng-click="toggleApuntarleA('comer')">
+          A comer
+        </button>
+        <button type="button" class="btn" ng-class="{'btn-default': !seApuntaA('fiesta'), 'btn-primary': seApuntaA('fiesta')}" ng-click="toggleApuntarleA('fiesta')">
+          A la fiesta
+        </button>
+      </div>
     </div>
-    
+
     <hr/>
 
     <div class="form-group" style="padding-top: 10px; margin-bottom: 0px;">
@@ -107,6 +118,17 @@
               <input type="checkbox" ng-model="asistente.comida.alergico">Es alérgico, así que nada de
               <input type="text" ng-model="asistente.comida.alergias" ng-change="haMetidoAlergias(asistente)" placeholder="marisco, frutos secos..." />
             </label>
+          </div>
+
+          <label>¿A qué se apunta?</label>
+          <br/>
+          <div class="btn-group">
+            <button type="button" class="btn" ng-class="{'btn-default': !seApuntaA('comer', asistente), 'btn-primary': seApuntaA('comer', asistente)}" ng-click="toggleApuntarleA('comer', asistente)">
+              A comer
+            </button>
+            <button type="button" class="btn" ng-class="{'btn-default': !seApuntaA('fiesta', asistente), 'btn-primary': seApuntaA('fiesta', asistente)}" ng-click="toggleApuntarleA('fiesta', asistente)">
+              A la fiesta
+            </button>
           </div>
         </div>
       </div>

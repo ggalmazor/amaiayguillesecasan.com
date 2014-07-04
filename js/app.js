@@ -8,6 +8,7 @@ function range(total) {
 function Asistente(principal) {
   var asistente = {
     nombre: '',
+    se_apunta_a: ['comer', 'fiesta'],
     comida: {
       celiaco: false,
       vegetariano: false,
@@ -107,6 +108,19 @@ app.controller('ConfirmaController', function ($scope, $http) {
   $scope.enviar = function () {
     $scope.enviando = true;
     $http.post('http://bodaguille.herokuapp.com/respuesta/', $scope.respuesta).then(success, error);
+  };
+  
+  $scope.seApuntaA = function(cosa, asistente) {
+    asistente = asistente || $scope.respuesta;
+    return asistente.se_apunta_a.indexOf(cosa) != -1;
+  };
+  
+  $scope.toggleApuntarleA = function(cosa, asistente) {
+    asistente = asistente || $scope.respuesta;
+    if ($scope.seApuntaA(cosa, asistente))
+      asistente.se_apunta_a.splice(asistente.se_apunta_a.indexOf(cosa), 1);
+    else
+      asistente.se_apunta_a.push(cosa);
   };
 });
 
