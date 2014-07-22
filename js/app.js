@@ -126,9 +126,9 @@ app.controller('ConfirmaController', function ($scope, $http) {
 
 app.controller('ModaController', function ($scope, $routeParams) {
   var max = {
-    ellas: 171,
-    ellos: 107,
-    peques: 58
+    ellas: 87,
+    ellos: 106,
+    peques: 65
   };
   $scope.max = max;
   $scope.quien = $routeParams.quien || 'ellas';
