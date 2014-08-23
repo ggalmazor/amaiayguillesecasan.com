@@ -68,10 +68,10 @@
       <br/>
       <div class="btn-group">
         <button type="button" class="btn" ng-class="{'btn-default': !seApuntaA('comer'), 'btn-primary': seApuntaA('comer')}" ng-click="toggleApuntarleA('comer')">
-          A comer
+          <span class="glyphicon" ng-class="{'glyphicon-ok': seApuntaA('comer')}"></span>&nbsp;A comer
         </button>
         <button type="button" class="btn" ng-class="{'btn-default': !seApuntaA('fiesta'), 'btn-primary': seApuntaA('fiesta')}" ng-click="toggleApuntarleA('fiesta')">
-          A la fiesta
+          <span class="glyphicon" ng-class="{'glyphicon-ok': seApuntaA('fiesta')}"></span>&nbsp;A la fiesta
         </button>
       </div>
     </div>
@@ -83,7 +83,7 @@
       <br/>
       <div class="btn-group">
         <button ng-repeat="numero in range(4)" type="button" class="btn" ng-class="{'btn-default': !hayOtrosAsistentes(numero), 'btn-primary': hayOtrosAsistentes(numero)}" ng-click="setOtrosAsistentes(numero)">
-          {{numeros[numero]}}
+          <span class="glyphicon" ng-class="{'glyphicon-ok': hayOtrosAsistentes(numero)}"></span>&nbsp;{{numeros[numero]}}
         </button>
       </div>
       <span class="help-block" ng-if="!hayOtrosAsistentes(0)"><span class="label label-success">¡Ojo!</span>&nbsp;Rellena los nombres de los demás asistentes a continuación...</span>
@@ -124,10 +124,10 @@
           <br/>
           <div class="btn-group">
             <button type="button" class="btn" ng-class="{'btn-default': !seApuntaA('comer', asistente), 'btn-primary': seApuntaA('comer', asistente)}" ng-click="toggleApuntarleA('comer', asistente)">
-              A comer
+              <span class="glyphicon" ng-class="{'glyphicon-ok': seApuntaA('comer', asistente)}"></span>&nbsp;A comer
             </button>
             <button type="button" class="btn" ng-class="{'btn-default': !seApuntaA('fiesta', asistente), 'btn-primary': seApuntaA('fiesta', asistente)}" ng-click="toggleApuntarleA('fiesta', asistente)">
-              A la fiesta
+              <span class="glyphicon" ng-class="{'glyphicon-ok': seApuntaA('fiesta', asistente)}"></span>&nbsp;A la fiesta
             </button>
           </div>
         </div>
@@ -140,7 +140,7 @@
       <label>Estamos organizando el transporte en autobús desde el Ayuntamiento de San Sebastián hasta el restaurante... Si crees que en tu grupo vais a necesitar usar el autobús, dime cuántos asientos vais a ocupar en total</label>
       <div class="btn-group">
         <button ng-repeat="numero in range(respuesta.otrosAsistentes + 2)" type="button" class="btn" ng-class="{'btn-default': !enAutobus(numero), 'btn-primary': enAutobus(numero)}" ng-click="setEnAutobus(numero)">
-          {{numeros[numero]}}
+          <span class="glyphicon" ng-class="{'glyphicon-ok': enAutobus(numero)}"></span>&nbsp;{{numeros[numero]}}
         </button>
       </div>
       <span class="help-block">No os preocupéis de la vuelta, porque habrá autobuses de vez en cuando :)</span>

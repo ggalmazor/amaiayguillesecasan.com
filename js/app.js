@@ -8,7 +8,7 @@ function range(total) {
 function Asistente(principal) {
   var asistente = {
     nombre: '',
-    se_apunta_a: ['comer', 'fiesta'],
+    se_apunta_a: [],
     comida: {
       celiaco: false,
       vegetariano: false,
